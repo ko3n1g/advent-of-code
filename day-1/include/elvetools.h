@@ -1,3 +1,7 @@
+#include <fstream>
+#include <string>
+#include <vector>
+
 /**
  * Converts a stream to a vector, and closes the vector afterwards by default.
  *

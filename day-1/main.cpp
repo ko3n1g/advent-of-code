@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <sstream>
+#include <numeric>
 #include <string>
 #include <vector>
 
@@ -24,15 +24,17 @@ int main(int argc, char const *argv[]) {
   // Create summary of caloriesPerElve and find Elve with the most calories
   std::vector<int> sumOfCaloriesPerElve = aggregateCalories(caloriesPerElve);
 
-  // Get index of Elve with most calories
-  int idxOfEleveWithMostCalories =
-      std::distance(sumOfCaloriesPerElve.begin(),
-                    std::max_element(sumOfCaloriesPerElve.begin(),
-                                     sumOfCaloriesPerElve.end()));
+  // Argsort calories if Elves
+  std::sort(sumOfCaloriesPerElve.begin(), sumOfCaloriesPerElve.end());
 
-  std::cout << printf("Elve number %d has the most calories (%d in total)\n",
-                      idxOfEleveWithMostCalories + 1,
-                      sumOfCaloriesPerElve[idxOfEleveWithMostCalories]);
+  // Print answer of part 1
+  printf("Elve with the most calories has %d in total\n",
+         sumOfCaloriesPerElve[sumOfCaloriesPerElve.size()-1]);
+
+  // Print answer of part 2
+  printf("Sum of top 3 elves is %d\n",
+         std::accumulate(sumOfCaloriesPerElve.end() - 3,
+                         sumOfCaloriesPerElve.end(), 0));
 
   return 0;
 }
