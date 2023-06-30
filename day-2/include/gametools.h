@@ -62,6 +62,12 @@ void part1(std::ifstream &gamePlay) {
   printf("Total score: %d\n", totalScore);
 }
 
+/**
+ * For part2, we will need a second map which inverts the `beats` map, such that
+ * we can easily pick the right symbol for winning. Also, we will introduce an
+ * enum which indicates the outcome.
+ */
+
 void part2(std::ifstream &gamePlay) {
   enum Outcome { Win, Draw, Loose };
   Outcome win = Win;
